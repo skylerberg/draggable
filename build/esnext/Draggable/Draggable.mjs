@@ -219,11 +219,9 @@ class Draggable {
   }
 
   [onDragStart](event) {
-    console.log(`this.dragging: ${this.dragging}`);
     if (this.dragging) {
       return;
     }
-
     const sensorEvent = getSensorEvent(event);
     const {
       target,

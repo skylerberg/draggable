@@ -48,6 +48,9 @@ class Swappable extends Draggable {
   }
 
   [onDragStart](event) {
+    if (this.isDragging()) {
+      return;
+    }
     const swappableStartEvent = new SwappableStartEvent({
       dragEvent: event
     });

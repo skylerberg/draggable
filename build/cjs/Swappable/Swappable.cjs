@@ -52,6 +52,9 @@ class Swappable extends Draggable.default {
   }
 
   [onDragStart](event) {
+    if (this.isDragging()) {
+      return;
+    }
     const swappableStartEvent = new SwappableEvent.SwappableStartEvent({
       dragEvent: event
     });

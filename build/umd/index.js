@@ -3005,11 +3005,9 @@
     }
 
     [onDragStart$3](event) {
-      console.log(`this.dragging: ${this.dragging}`);
       if (this.dragging) {
         return;
       }
-
       const sensorEvent = getSensorEvent(event);
       const {
         target,
@@ -3356,7 +3354,7 @@
     }
 
     [onDragStart$2](event) {
-      if (event.canceled()) {
+      if (event.canceled() || this.isDragging()) {
         return;
       }
       this.dropzones = [...this[getDropzones]()];
@@ -3549,6 +3547,9 @@
     }
 
     [onDragStart$1](event) {
+      if (this.isDragging()) {
+        return;
+      }
       const swappableStartEvent = new SwappableStartEvent({
         dragEvent: event
       });
@@ -3759,6 +3760,9 @@
     }
 
     [onDragStart](event) {
+      if (this.isDragging()) {
+        return;
+      }
       this.startContainer = event.source.parentNode;
       this.startIndex = this.index(event.source);
       const sortableStartEvent = new SortableStartEvent({

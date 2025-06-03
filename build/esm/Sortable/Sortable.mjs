@@ -72,6 +72,9 @@ class Sortable extends Draggable {
   }
 
   [onDragStart](event) {
+    if (this.isDragging()) {
+      return;
+    }
     this.startContainer = event.source.parentNode;
     this.startIndex = this.index(event.source);
     const sortableStartEvent = new SortableStartEvent({

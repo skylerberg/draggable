@@ -83,7 +83,7 @@ class Droppable extends Draggable.default {
   }
 
   [onDragStart](event) {
-    if (event.canceled()) {
+    if (event.canceled() || this.isDragging()) {
       return;
     }
     this.dropzones = [...this[getDropzones]()];
