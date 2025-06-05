@@ -425,8 +425,8 @@ function positionMirror({
         ...args
       };
       if (mirrorOffset) {
-        const x = passedThreshX ? Math.round((sensorEvent.clientX - mirrorOffset.left - scrollOffset.x) / (options.thresholdX || 1)) * (options.thresholdX || 1) : Math.round(lastMovedX);
-        const y = passedThreshY ? Math.round((sensorEvent.clientY - mirrorOffset.top - scrollOffset.y) / (options.thresholdY || 1)) * (options.thresholdY || 1) : Math.round(lastMovedY);
+        const x = passedThreshX ? (sensorEvent.clientX - mirrorOffset.left - scrollOffset.x) / (options.thresholdX || 1) * (options.thresholdX || 1) : lastMovedX;
+        const y = passedThreshY ? (sensorEvent.clientY - mirrorOffset.top - scrollOffset.y) / (options.thresholdY || 1) * (options.thresholdY || 1) : lastMovedY;
         if (options.xAxis && options.yAxis || initial) {
           mirror.style.transform = `translate3d(${x}px, ${y}px, 0)`;
         } else if (options.xAxis && !options.yAxis) {
